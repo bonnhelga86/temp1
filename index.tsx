@@ -103,6 +103,13 @@ const Form: FC<Props> = ({ params, model }) => {
     setFormValues([...formValues]);
   };
 
+  const getModel = () => {
+    const model = formValues.map((formValue) => {
+      return [`${formValue.label}: ${formValue.value}`];
+    });
+    return model.join("\r\n");
+  };
+
   return (
     <div>
       <form>
@@ -116,6 +123,7 @@ const Form: FC<Props> = ({ params, model }) => {
           );
         })}
       </form>
+      <pre>{getModel()}</pre>
     </div>
   );
 };
